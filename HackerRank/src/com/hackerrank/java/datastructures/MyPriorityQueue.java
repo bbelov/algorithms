@@ -5,7 +5,9 @@ import java.util.*;
 
 class Priorities {
 
-    private Queue<MyStudent> q = new PriorityQueue<>();
+    private Queue<MyStudent> q = new PriorityQueue<>(10, Comparator.comparing(MyStudent::getCgpa).reversed()
+        .thenComparing(MyStudent::getName)
+        .thenComparing(MyStudent::getId));
 
     public List<MyStudent> getStudents(List<String> events) {
         for (String event : events) {
@@ -17,10 +19,6 @@ class Priorities {
                     int id = in.nextInt();
                     q.add(new MyStudent(id, name, cgpa));
                 } else if(action.equals("SERVED")) {
-                    for (MyStudent s : new ArrayList<>(q)) {
-                        System.out.println(s);
-                    }
-                    System.out.println();
                     q.poll();
                 }
             }
@@ -29,7 +27,7 @@ class Priorities {
     }
 }
 
-class MyStudent  implements Comparable<MyStudent>{
+class MyStudent {
     private int id;
     private String name;
     private double cgpa;
@@ -56,20 +54,6 @@ class MyStudent  implements Comparable<MyStudent>{
     @Override
     public String toString() {
         return name + ": " + cgpa + ":" + id;
-    }
-
-    @Override
-    public int compareTo(MyStudent o) {
-        int rc;
-        if (getCgpa() == o.getCgpa()) {
-            rc = o.getName().compareTo(getName());
-            if ( rc == 0) {
-                rc = getId() - o.getId();
-            }
-        } else {
-            rc = getCgpa() > o.getCgpa() ? -1 : 1;
-        }
-        return rc;
     }
 }
 
