@@ -13,9 +13,10 @@ public class DynamicArray
             int q = s.nextInt();
             // initialize sequences
             List<Integer>[] seqList = new ArrayList[n];
-            for (int i =0; i < n; i++) {
+            for (int i = 0; i < n; i++) {
                 seqList[i] = new ArrayList<>();
             }
+
             int lastAnswer = 0;
             for (int i = 0; i < q; i ++) {
                 int query = s.nextInt();
