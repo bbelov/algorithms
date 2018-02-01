@@ -9,19 +9,24 @@ import java.util.regex.*;
 public class LeftRotation
 {
     static int[] leftRotation(int[] a, int d) {
-        int n = a.length;
-        for (int i = 0; i < n; i++) {
-            if (n > i) {
-                int tmp = a[i];
-                a[i] = a[n-d+i];
-                a[n-d+i] = tmp;
-            } else {
-                int tmp = a[i];
-                a[i] = a[i-d];
-                a[i-d] = tmp;
-            }
+        if (d == a.length) {
+            return a;
         }
-        return a;
+        int n = a.length;
+        /// inefficient solution - O(n^2) runetime, O(n) memory
+        /*for (int shift = 0; shift < d; shift++) {
+            for (int i = 0; i < (n-1); i++) {
+                int tmp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = tmp;
+            }
+        }*/
+        // O(n) runtime, O(2n) memory
+        int[] tmp = new int[a.length];
+        for (int i = 0; i < n; i++) {
+            tmp[(i+n-d)%n] = a[i ];
+        }
+        return tmp;
     }
 
     public static void main(String[] args) {
