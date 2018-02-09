@@ -8,6 +8,11 @@ import java.util.regex.*;
 
 public class ArrayManipulation
 {
+    /**
+     * 587917 9682497 84538
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
             int n = in.nextInt();
@@ -17,12 +22,10 @@ public class ArrayManipulation
             for (int a0 = 0; a0 < m; a0++) {
                 int a = in.nextInt();
                 int b = in.nextInt();
-                int k = in.nextInt();
-                for (int i = a - 1; i <= (b - 1); i++) {
+                long k = in.nextInt();
+                for (int i = (a - 1); i <= (b - 1); i++) {
                     array[i] += k;
-                    if (max < array[i]) {
-                        max = array[i];
-                    }
+                    max = Math.max(max, array[i]);
                 }
             }
             System.out.println(max);
