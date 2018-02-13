@@ -12,14 +12,24 @@ import java.util.regex.*;
  */
 public class RepeatedString
 {
-    static long repeatedString(String s, long n) {
+    static long countAs(String s) {
         long count = 0;
-        for (byte c: s.getBytes()) {
+        for (char c :s.toCharArray()) {
             if (c == 'a') {
-                count++;
+                count ++;
             }
         }
-        return count * n;
+        return count;
+    }
+
+    static long repeatedString(String s, long n) {
+        long total = countAs(s); // letters 'a' in a single word
+        total *= n/s.length();
+        long num = n % s.length();
+        if (n % s.length() != 0) {
+            total += countAs(s.substring(0, (int)(n % s.length())));
+        }
+        return total;
     }
 
     public static void main(String[] args) {
