@@ -41,6 +41,32 @@ public class MergeSort
                 a[k] = aux[i++];
             }
         }
+    }
 
+    private static void merge(Comparable[] a, int low, int middle, int high) {
+        Comparable[] lowHalf = new Comparable[middle - low + 1];
+        Comparable[] highHalf = new Comparable[high - middle + 1];
+
+        for (int k = low, i = 0; low <= middle; i ++, k++) {
+            lowHalf[i] = a[k];
+        }
+        for (int k = middle + 1, i = 0; k <= high; i ++, k++) {
+            lowHalf[i] = a[i];
+        }
+        int k, i, j;
+        for (k = low, i = 0, j = 0; i <= (middle - low - 1) && j <= (high - middle -1); k++) {
+            if (lowHalf[i].compareTo(highHalf[i]) < 0) {
+                a[k] = lowHalf[i++];
+            } else  {
+                a[k] = highHalf[j+1];
+            }
+        }
+
+        while (i < lowHalf.length) {
+            a[k++] = lowHalf[i++];
+        }
+        while (j < highHalf.length) {
+            a[k++] = lowHalf[j++];
+        }
     }
 }
