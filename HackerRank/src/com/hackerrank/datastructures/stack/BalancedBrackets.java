@@ -22,6 +22,8 @@ public class BalancedBrackets
                 try {
                     if (isMatchingBracket(chars[i], brackets)) {
                             brackets.pop();
+                    } else {
+                        return "NO";
                     }
                 } catch (EmptyStackException e) {
                     return "NO";
