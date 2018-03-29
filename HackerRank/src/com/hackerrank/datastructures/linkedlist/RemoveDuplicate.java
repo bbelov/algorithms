@@ -19,8 +19,9 @@ public class RemoveDuplicate {
             for (Node tmp = head.next, prev = head; tmp != null;) {
                 if (prev.data == tmp.data) {
                     prev.next = tmp.next;
+                } else {
+                    prev = prev.next;
                 }
-                prev = prev.next;
                 tmp = tmp.next;
             }
         }
