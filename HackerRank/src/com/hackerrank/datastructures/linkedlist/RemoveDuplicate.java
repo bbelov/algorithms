@@ -45,6 +45,7 @@ public class RemoveDuplicate {
         }
         return head;
     }
+
     public static void display(Node head)
     {
         Node start=head;
