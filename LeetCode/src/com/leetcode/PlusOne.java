@@ -8,6 +8,7 @@ public class PlusOne {
             digits[i] = plusOne % 10;
             carry = plusOne / 10;
         }
+
         if (carry != 0) {
             int[] newDigits = new int[digits.length + 1];
             System.arraycopy(digits, 0, newDigits, 1, digits.length);
